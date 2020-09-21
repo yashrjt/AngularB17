@@ -1,0 +1,48 @@
+<!-- String interpolation -->
+<p class="para">Hello this is {{studentName}}</p>
+<p>{{4+5}}</p>
+
+
+
+<!-- event binding -->
+
+<button (click)="submit()">Submit</button>
+<br>
+
+<!-- property binding -->
+
+<input type="text" [value]="cityName">
+<img [src]="imgSrc" alt="">
+
+<!-- Structural Directives -->
+
+<h4>Structural Directives</h4>
+<p *ngIf="booleanVar">Boolean var is true</p>
+
+<ul *ngFor="let item of studentArr">
+    <li>{{item.studentId}},{{item.studentName | uppercase}}</li>
+    <li *ngIf="item.studentActive;else notActive">Active</li>
+   
+    <ng-template #notActive>
+        <li> Not active</li>
+    </ng-template>
+    <li>{{item.studentDOb | date:'long' }}</li>
+    <li>{{item.fees | currency}}</li>
+    <li>{{item.studentFile | formatConverter }}</li>
+</ul>
+
+
+<!-- Attribute directives -->
+<!-- ngclass -->
+<h4> Attribute directives</h4>
+
+    <ul >
+    <ng-container *ngFor="let item of studentArr">
+        <li>{{item.studentId}},{{item.studentName}}</li>
+        <li [ngClass]="{studentActive: item.studentActive}">Active</li>
+        <!-- <li [ngClass]="{'studentActive':item.studentActive===true,
+                        'studentNotActive':item.studentActive===false}">Active</li> -->
+    </ng-container>
+       
+    </ul>
+
